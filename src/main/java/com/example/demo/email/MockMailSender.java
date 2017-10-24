@@ -5,7 +5,7 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Component;
 
 
-@Component
+
 public class MockMailSender implements IMailSender {
 	
 	private static Log log = LogFactory.getLog(MockMailSender.class);
