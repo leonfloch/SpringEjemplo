@@ -5,6 +5,8 @@
 <title>Insert title here</title>
 <!-- Bootstrap -->
     <link href="/js/lib/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link href="/css/styles.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -53,7 +55,10 @@
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Link</a></li>
+        <li><a href="/signup">
+        		<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+        		Signup</a>
+        	</li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
           <ul class="dropdown-menu">
