@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.commands.UserCommand;
+import com.example.demo.services.UserService;
 import com.example.demo.utils.MyUtils;
 
 /**
@@ -29,6 +30,18 @@ import com.example.demo.utils.MyUtils;
 public class SignupController {
 	
 	private static Log log = LogFactory.getLog(SignupController.class);
+	
+	private UserService userService; 
+	
+	
+
+	/**
+	 * 
+	 * @param userService
+	 */
+	public SignupController(UserService userService) {		
+		this.userService = userService;
+	}
 
 	@GetMapping
 	public String signup(Model model) {
@@ -42,7 +55,7 @@ public class SignupController {
 		if (result.hasErrors())
 			return "signup";
 		
-		log.info("Email: " + user.getEmail() + "Name: " + user.getName() + "Password: " + user.getPassword());
+		this.userService.sigup(user);
 		
 		return "redirect:/";
 		

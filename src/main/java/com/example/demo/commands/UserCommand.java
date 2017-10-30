@@ -7,6 +7,8 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import com.example.demo.domain.User;
+
 /**
  * @author leonardovalbuenacalderon
  *
@@ -60,6 +62,14 @@ public class UserCommand {
 	 */
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public User toUser() {
+		User user = new User();
+		user.setEmail(this.email);
+		user.setName(this.name);
+		user.setPassword(this.password);
+		return user;
 	}
 	
 	
