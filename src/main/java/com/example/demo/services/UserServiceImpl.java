@@ -3,6 +3,8 @@ package com.example.demo.services;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.commands.UserCommand;
+import com.example.demo.domain.User;
+import com.example.demo.domain.User.Role;
 import com.example.demo.repositories.UserRepository;
 
 @Service("userService")
@@ -13,7 +15,7 @@ public class UserServiceImpl implements UserService  {
 	
 
 	/**
-	 * Constructor que inyecta el UserRepository
+	 * Constructor que injecta el UserRepository
 	 * @param userRepository
 	 */
 	public UserServiceImpl(UserRepository userRepository) {
@@ -24,7 +26,10 @@ public class UserServiceImpl implements UserService  {
 
 	@Override
 	public void sigup(UserCommand userCommand) {
-		userRepository.save(userCommand.toUser());		
+		
+		User user = userCommand.toUser();
+		user.getRoles().add(Role.UNVERIFIED);
+		userRepository.save(user);		
 	}
 
 }
