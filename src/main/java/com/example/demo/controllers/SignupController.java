@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.commands.UserCommand;
 import com.example.demo.services.UserService;
@@ -50,12 +51,16 @@ public class SignupController {
 	}
 	
 	@PostMapping
-	public String doSignup(@Validated @ModelAttribute("user") UserCommand user, BindingResult result) {
+	public String doSignup(@Validated @ModelAttribute("user") UserCommand user, BindingResult result, 
+			RedirectAttributes redirectAttributes) {
 		
 		if (result.hasErrors())
 			return "signup";
 		
 		this.userService.sigup(user);
+		
+		MyUtils.flash(redirectAttributes, "success", "signupSuccess");
+		
 		
 		return "redirect:/";
 		

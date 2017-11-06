@@ -8,6 +8,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 import com.example.demo.domain.User;
+import com.example.demo.validation.Password;
+import com.example.demo.validation.UniqueEmail;
 
 /**
  * @author leonardovalbuenacalderon
@@ -15,18 +17,17 @@ import com.example.demo.domain.User;
  */
 public class UserCommand {
 	
-	@NotBlank(message="{blankEmail}")
-	@Email
-	@Size(min=4, max=25, message="{emailSizeError}")
+	
+	@UniqueEmail
 	private String email;
 	
 	@NotBlank
 	@Size(min=1, max=25)
 	private String name;
 	
-	@NotBlank
-	@Size(min=6, max=25)
+	@Password
 	private String password;
+	
 	/**
 	 * @return the email
 	 */

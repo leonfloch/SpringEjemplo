@@ -2,6 +2,11 @@
     pageEncoding="UTF-8"%>
 
 <%@ include file="includes/header.jsp"%>
+
+<c:if test="${not empty flashMessage}">
+
+	
+</c:if>
  
  Hola JSP
  
