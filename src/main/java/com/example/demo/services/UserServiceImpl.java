@@ -1,6 +1,8 @@
 package com.example.demo.services;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.commands.UserCommand;
 import com.example.demo.domain.User;
@@ -25,11 +27,13 @@ public class UserServiceImpl implements UserService  {
 
 
 	@Override
+	@Transactional(propagation=Propagation.REQUIRED, readOnly=false)
 	public void sigup(UserCommand userCommand) {
 		
 		User user = userCommand.toUser();
 		user.getRoles().add(Role.UNVERIFIED);
-		userRepository.save(user);		
+		userRepository.save(user);	
+		throw new RuntimeException("problema al guardar");
 	}
 
 }

@@ -28,6 +28,8 @@ public class HelloController {
 		
 		model.addAttribute("name", msg);
 		
+//		throw new RuntimeException("un error");
+		
 		return "hello";
 	}
 }
